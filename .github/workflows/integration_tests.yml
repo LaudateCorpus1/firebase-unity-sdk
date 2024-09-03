@@ -365,7 +365,7 @@ jobs:
         run: rm -rf testapps-${{ matrix.unity_version }}-${{matrix.os}}-${{ needs.check_and_prepare.outputs.platform }}/Windows || true
       - name: Download log artifacts
         if: ${{ needs.check_and_prepare.outputs.pr_number && failure() && !cancelled() }}
-        uses: actions/download-artifact@v2.0.8
+        uses: actions/download-artifact@v4.1.7
         with:
           path: test_results
           name: log-artifact
@@ -405,7 +405,7 @@ jobs:
         with:
           ref: ${{needs.check_and_prepare.outputs.github_ref}}
       - name: Download Desktop integration tests artifact
-        uses: actions/download-artifact@v2.0.8
+        uses: actions/download-artifact@v4.1.7
         with:
           path: testapps
           name: testapps-${{ matrix.unity_version }}-${{ matrix.build_os }}-${{ matrix.os }}
@@ -440,7 +440,7 @@ jobs:
           retention-days: ${{ env.artifactRetentionDays }}
       - name: Download log artifacts
         if: ${{ needs.check_and_prepare.outputs.pr_number && failure() && !cancelled() }}
-        uses: actions/download-artifact@v2.0.8
+        uses: actions/download-artifact@v4.1.7
         with:
           path: test_results
           name: log-artifact
@@ -492,7 +492,7 @@ jobs:
           echo "::set-output name=device_type::$( python scripts/gha/print_matrix_configuration.py -k ${{ matrix.mobile_device }} -get_device_type)"
           echo "::set-output name=device_platform::$( python scripts/gha/print_matrix_configuration.py -k ${{ matrix.mobile_device }} -get_device_platform)"
       - name: Download Desktop integration tests artifact
-        uses: actions/download-artifact@v2.0.8
+        uses: actions/download-artifact@v4.1.7
         with:
           path: testapps
           name: testapps-${{ matrix.unity_version }}-${{ matrix.build_os }}-${{ steps.device-info.outputs.device_platform }}
@@ -536,7 +536,7 @@ jobs:
           retention-days: ${{ env.artifactRetentionDays }}
       - name: Download log artifacts
         if: ${{ needs.check_and_prepare.outputs.pr_number && failure() && !cancelled() }}
-        uses: actions/download-artifact@v2.0.8
+        uses: actions/download-artifact@v4.1.7
         with:
           path: test_results
           name: log-artifact
@@ -575,7 +575,7 @@ jobs:
       - name: Install python deps
         run: pip install -r scripts/gha/requirements.txt
       - name: Download log artifacts
-        uses: actions/download-artifact@v2.0.8
+        uses: actions/download-artifact@v4.1.7
         with:
           path: test_results
           name: log-artifact
