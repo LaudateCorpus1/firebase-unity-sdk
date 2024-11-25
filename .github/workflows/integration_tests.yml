@@ -248,7 +248,7 @@ jobs:
         run: |
           python scripts/gha/restore_secrets.py --passphrase "${{ secrets.TEST_SECRET }}"
       - name: Fetch prebuilt packaged SDK from previous run
-        uses: dawidd6/action-download-artifact@v2
+        uses: dawidd6/action-download-artifact@v6
         if: ${{ github.event.inputs.test_packaged_sdk != '' }}
         with:
           name: 'firebase_unity_sdk.zip'
